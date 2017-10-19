@@ -5,7 +5,7 @@ def main(path, n):
     """Make a docstring."""
     with open(path) as book_file:
         book = book_file.read()
-        print(book)
+        return book
 
 
-main('/test_book.txt')
+main('test_book.txt', 1)
