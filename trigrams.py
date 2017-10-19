@@ -3,7 +3,21 @@
 
 def main(path, n):
     """Make a docstring."""
+    import random
+
     trigrams = generate_trigrams(book_into_list(path))
+
+    output = random.choice(list(trigrams)).split()
+
+    for word in range(n - 2):
+        pair_to_check = output[-2] + ' ' + output[-1]
+        word_to_add = trigrams.get(pair_to_check)[0]
+        output.append(word_to_add)
+        print(word_to_add)
+
+    print(output)
+
+    return output
 
 
 def book_into_list(path_to_book):
@@ -32,11 +46,11 @@ def generate_trigrams(words):
 
         if pair in generated_trigrams:
             generated_trigrams[pair].append(words[idx + 2])
-            print(generated_trigrams[pair])
+
         else:
             generated_trigrams[pair] = [words[idx + 2]]
 
     return generated_trigrams
 
 
-main('test_book.txt', 1)
+main('test_book.txt', 100)
