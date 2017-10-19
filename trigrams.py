@@ -1,8 +1,8 @@
-"""Generate trigrams from a book."""
+"""Return a string of n related words using trigrams from a .txt file."""
 
 
 def main(path, n):
-    """Make a docstring."""
+    """Return a string of n related words using trigrams from a .txt file."""
     import random
 
     trigrams = generate_trigrams(book_into_list(path))
@@ -18,7 +18,7 @@ def main(path, n):
 
 
 def book_into_list(path_to_book):
-    """Break the book.txt file into a list of words without punctuation."""
+    """Make .txt file into a list of lower-case words without punctuation."""
     import string
 
     with open(path_to_book) as book_file:
@@ -50,4 +50,10 @@ def generate_trigrams(words):
     return generated_trigrams
 
 
-main('test_book.txt', 100)
+# main('test_book.txt', 100)
+
+
+if __name__ == '__main__':
+    import sys
+
+    main(sys.argv[1], int(sys.argv[2]))

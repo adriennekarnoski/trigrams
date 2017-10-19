@@ -1,3 +1,4 @@
 #trigrams
 __pycache__/
 ENV/
+test_book.txt
