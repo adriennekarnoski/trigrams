@@ -14,6 +14,7 @@ def main(path, n):
         word_to_add = trigrams.get(pair_to_check)[0]
         output.append(word_to_add)
 
+    print(' '.join(output))
     return ' '.join(output)
 
 
