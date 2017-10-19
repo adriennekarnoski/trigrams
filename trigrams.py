@@ -14,6 +14,7 @@ def book_into_list(path_to_book):
         book = book_file.read()
         raw_word_list = book.split()
         word_list = []
+
         for word in raw_word_list:
             word_list.append(word.strip(string.punctuation))
 
@@ -24,12 +25,18 @@ def generate_trigrams(words):
     """Take in a list of words and return a dictionary of trigrams."""
     generated_trigrams = {}
     for idx, word in enumerate(words):
-        pair = word[idx] + word[idx + 1]
+        if idx == len(words) - 2:
+            break
+
+        pair = words[idx] + ' ' + words[idx + 1]
+
         if pair in generated_trigrams:
-            generated_trigrams[pair].append(word[idx + 2])
+            generated_trigrams[pair].append(words[idx + 2])
+            print(generated_trigrams[pair])
         else:
-            generated_trigrams[pair] = [word[idx + 2]]
+            generated_trigrams[pair] = [words[idx + 2]]
 
     return generated_trigrams
+
 
 main('test_book.txt', 1)
