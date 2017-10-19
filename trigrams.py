@@ -13,11 +13,8 @@ def main(path, n):
         pair_to_check = output[-2] + ' ' + output[-1]
         word_to_add = trigrams.get(pair_to_check)[0]
         output.append(word_to_add)
-        print(word_to_add)
 
-    print(output)
-
-    return output
+    return ' '.join(output)
 
 
 def book_into_list(path_to_book):
@@ -25,7 +22,7 @@ def book_into_list(path_to_book):
     import string
 
     with open(path_to_book) as book_file:
-        book = book_file.read()
+        book = book_file.read().lower()
         raw_word_list = book.split()
         word_list = []
 
@@ -42,7 +39,7 @@ def generate_trigrams(words):
         if idx == len(words) - 2:
             break
 
-        pair = words[idx] + ' ' + words[idx + 1]
+        pair = (words[idx] + ' ' + words[idx + 1])
 
         if pair in generated_trigrams:
             generated_trigrams[pair].append(words[idx + 2])
