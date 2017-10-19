@@ -51,9 +51,6 @@ def generate_trigrams(words):
     return generated_trigrams
 
 
-# main('test_book.txt', 100)
-
-
 if __name__ == '__main__':
     import sys
 
