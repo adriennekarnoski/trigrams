@@ -37,13 +37,13 @@ def test_keys_available_in_dictionary():
 def test_main_function_taking_dictionary():
     """Test to verify main function is accepting trigram dictionary."""
     from trigrams import main
-    returned_trigram = main('test_book.txt', 100)
+    returned_trigram = main('test_book.txt', 500)
     assert returned_trigram
 
 
 def test_main_returns_correct_word_amount():
     """Test that the functions return the amount of words requested."""
     from trigrams import main
-    returned_trigram = main('test_book.txt', 100)
-    assert len(returned_trigram.split()) == 100
+    returned_trigram = main('test_book.txt', 500)
+    assert len(returned_trigram.split()) == 500
 
