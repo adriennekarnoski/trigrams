@@ -1,9 +1,12 @@
 """Return a string of n related words using trigrams from a .txt file."""
 
 
+import random
+import string
+
+
 def main(path, n):
     """Return a string of n related words using trigrams from a .txt file."""
-    import random
 
     trigrams = generate_trigrams(book_into_list(path))
 
@@ -19,16 +22,16 @@ def main(path, n):
 
 
 def book_into_list(path_to_book):
-    """Make .txt file into a list of lower-case words without punctuation."""
-    import string
+    """Make .txt file into a list of lower-case words without punctuation."""  
 
     with open(path_to_book) as book_file:
         book = book_file.read().lower()
-        raw_word_list = book.split()
-        word_list = []
 
-        for word in raw_word_list:
-            word_list.append(word.strip(string.punctuation))
+    raw_word_list = book.split()
+    word_list = []
+
+    for word in raw_word_list:
+        word_list.append(word.strip(string.punctuation))
 
     return word_list
 
