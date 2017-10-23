@@ -3,11 +3,11 @@
 
 import random
 import string
+import sys
 
 
 def main(path, n):
     """Return a string of n related words using trigrams from a .txt file."""
-
     trigrams = generate_trigrams(book_into_list(path))
 
     output = random.choice(list(trigrams)).split()
@@ -16,6 +16,8 @@ def main(path, n):
         for word in range(n - 2):
             pair_to_check = output[-2] + ' ' + output[-1]
             word_to_add = trigrams.get(pair_to_check)[0]
+            if word_to_add[0] == ' ':
+                word_to_add = word_to_add[1:]
             output.append(word_to_add)
 
     print(' '.join(output))
@@ -23,10 +25,10 @@ def main(path, n):
 
 
 def book_into_list(path_to_book):
-    """Make .txt file into a list of lower-case words without punctuation."""  
-
-    with open(path_to_book) as book_file:
-        book = book_file.read().lower()
+    """Make .txt file into a list of lower-case words without punctuation."""
+    book_file = open(path_to_book)
+    book = book_file.read().lower()
+    book_file.close()
 
     raw_word_list = book.split()
     word_list = []
@@ -56,6 +58,5 @@ def generate_trigrams(words):
 
 
 if __name__ == '__main__':
-    import sys
 
     main(sys.argv[1], int(sys.argv[2]))
